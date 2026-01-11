@@ -52,15 +52,15 @@ models:
       filter_method: mean
       filter_ratio: 0.5
       data:
-        max_prompt_length: ${data.max_prompt_length}
-        max_response_length: ${data.max_response_length}
+        max_prompt_length: ${training.max_prompt_length}
+        max_response_length: ${training.max_response_length}
       actor_rollout_ref:
         model:
           path: ${models.model_0.path}
         rollout:
-          temperature: ${data.sample_temperature}
-          prompt_length: ${data.max_prompt_length}
-          response_length: ${data.max_response_length}
+          temperature: ${training.sample_temperature}
+          prompt_length: ${training.max_prompt_length}
+          response_length: ${training.max_response_length}
           tensor_model_parallel_size: ${resource.n_gpus_per_node}
         trainer:
           n_gpus_per_node: ${resource.n_gpus_per_node}

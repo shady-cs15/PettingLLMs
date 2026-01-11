@@ -37,6 +37,5 @@ python3 -m pettingllms.trainer.train --config-path ../config/code --config-name 
     training.max_prompt_length=4096\
     training.max_response_length=2048\
     training.val_freq=10\
-    training.resample_freq=3\
     env.dataset=code_contests\
     env.benchmark=code_contests\
