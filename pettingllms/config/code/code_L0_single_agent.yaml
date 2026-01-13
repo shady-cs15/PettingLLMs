@@ -65,7 +65,7 @@ models:
         trainer:
           n_gpus_per_node: ${resource.n_gpus_per_node}
           n_training_gpus_per_node: ${resource.n_gpus_per_node}
-          default_local_dir: ${trainer.default_local_dir}
+          default_local_dir: checkpoints
 training:
   device: cuda
   total_training_steps: 200
