@@ -1,9 +1,12 @@
-# setup pyenv
+# install linux dependencies
 sudo apt update
 sudo apt install -y make build-essential \
   libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev \
   wget curl llvm libncursesw5-dev xz-utils tk-dev libxml2-dev \
   libxmlsec1-dev libffi-dev liblzma-dev
+
+# setup pyenv
+rm -rf /root/.pyenv
 curl https://pyenv.run | bash
 
 # install Python 3.12
@@ -15,8 +18,11 @@ eval "$(pyenv virtualenv-init -)"
 sleep 5
 pyenv install 3.12.2
 pyenv local 3.12.2
-
+echo "python version: "
 python --version
+sleep 5
+# remove symlink if already exists
+sudo rm -rf /usr/bin/python3.12 
 sudo ln -s "$(pyenv which python)" /usr/bin/python3.12
 
 # install pip dependencies
