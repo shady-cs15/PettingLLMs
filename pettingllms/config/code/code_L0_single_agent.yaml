@@ -42,11 +42,11 @@ logger:
 - wandb
 base_models:
   policy_0:
-    path: your base model path
+    path: Qwen/Qwen2.5-Coder-1.5B
     name: shared_model
 models:
   model_0:
-    path: your model path
+    path: Qwen/Qwen2.5-Coder-1.5B
     name: code_generator_model
     ppo_trainer_config:
       filter_method: mean

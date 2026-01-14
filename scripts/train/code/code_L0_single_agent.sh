@@ -28,7 +28,7 @@ model_0_resource="resource.n_gpus_per_node=$GPU_num  $model_0_config_path.traine
 
 python3 -m pettingllms.trainer.train --config-path ../config/code --config-name code_L0_single_agent \
     $model_0_resource \
-    models.model_0.path="your model path"\
+    models.model_0.path=Qwen/Qwen2.5-Coder-1.5B\
     training.experiment_name=code_single_agent\
     training.total_training_steps=200\
     training.train_batch_size=32\
