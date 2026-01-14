@@ -7,10 +7,12 @@ sudo apt install -y make build-essential \
 curl https://pyenv.run | bash
 
 # install Python 3.12
+sleep 10
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+sleep 5
 pyenv install 3.12.2
 pyenv local 3.12.2
 
