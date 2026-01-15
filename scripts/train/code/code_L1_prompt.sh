@@ -28,7 +28,6 @@ model_0_resource="resource.n_gpus_per_node=$GPU_num  $model_0_config_path.traine
 
 python3 -m pettingllms.trainer.train --config-path ../config/code --config-name code_L1_prompt \
     $model_0_resource \
-    project_name=marl-dev\
     training.project_name=marl-dev\
     base_models.policy_0.path=Qwen/Qwen2.5-Coder-1.5B\
     training.experiment_name=code_multi_agent_ps\
