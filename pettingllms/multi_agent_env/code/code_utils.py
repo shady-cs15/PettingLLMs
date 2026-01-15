@@ -71,7 +71,10 @@ def load_problem_batch(
     """
     
     current_dir = Path(__file__).parent.parent.parent.parent
-    local_datasets_dir = current_dir / "data" / "code"
+    datasets_dir = current_dir / "datasets" / "code"
+    data_dir = current_dir / "data" / "code"
+    # Prefer new default "datasets/code", but keep backward-compat with "data/code".
+    local_datasets_dir = datasets_dir if datasets_dir.exists() else data_dir
     
     if mode == "train":
         parquet_file = local_datasets_dir / "train" / f"{dataset_name}.parquet"
@@ -81,6 +84,7 @@ def load_problem_batch(
     if not parquet_file.exists():
         raise FileNotFoundError(
             f"Parquet file not found: {parquet_file}. "
+            f"Expected under {datasets_dir} (preferred) or {data_dir}. "
             f"Please run scripts/dataprocess/load_code.py to generate data."
         )
     
