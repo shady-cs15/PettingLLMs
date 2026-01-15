@@ -28,8 +28,10 @@ model_0_resource="resource.n_gpus_per_node=$GPU_num  $model_0_config_path.traine
 
 python3 -m pettingllms.trainer.train --config-path ../config/code --config-name code_L1_prompt \
     $model_0_resource \
-    base_models.policy_0.path="your base model path"\
-    training.experiment_name=code_prompt\
+    project_name=marl-dev\
+    training.project_name=marl-dev\
+    base_models.policy_0.path=Qwen/Qwen2.5-Coder-1.5B\
+    training.experiment_name=code_multi_agent_ps\
     training.total_training_steps=200\
     training.train_batch_size=32\
     training.train_sample_num=8\
@@ -37,6 +39,5 @@ python3 -m pettingllms.trainer.train --config-path ../config/code --config-name 
     training.max_prompt_length=4096\
     training.max_response_length=2048\
     training.val_freq=10\
-    training.resample_freq=3\
     env.dataset=code_contests\
     env.benchmark=code_contests\

@@ -16,7 +16,7 @@ env:
   batched_init: true
 base_models:
   policy_0:
-    path: your base model path
+    path: Qwen/Qwen2.5-Coder-1.5B
     name: shared_model
 agent_policy_configs:
   agent_configs:
@@ -95,3 +95,4 @@ models:
         trainer:
           n_gpus_per_node: ${resource.n_gpus_per_node}
           n_training_gpus_per_node: ${resource.n_gpus_per_node}
+          default_local_dir: checkpoints
