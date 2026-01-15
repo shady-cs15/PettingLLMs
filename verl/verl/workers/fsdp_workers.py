@@ -136,6 +136,8 @@ class ActorRolloutRefWorker(Worker):
         self.ulysses_sharding_manager = FSDPUlyssesShardingManager(self.ulysses_device_mesh)
         self._lora_rank = self.config.model.get('lora_rank', 0)
         self._is_lora = self._lora_rank > 0
+        # Ensure attribute exists even when LoRA is disabled.
+        self.lora_num = getattr(self.config, 'lora_num', 0)
 
         self.role = role
         assert self.role in ["actor", "rollout", "ref", "actor_rollout", "actor_rollout_ref"]
