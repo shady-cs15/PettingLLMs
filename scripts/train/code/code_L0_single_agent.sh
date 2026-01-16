@@ -21,6 +21,9 @@ export LD_LIBRARY_PATH=$CUDA_HOME/lib64:${LD_LIBRARY_PATH}
 
 GPU_num=1
 
+# Save validation generations during training
+val_generations_dir="outputs/val_generations/code_single_agent"
+
 
 model_0_config_path="models.model_0.ppo_trainer_config"
 model_0_resource="resource.n_gpus_per_node=$GPU_num  $model_0_config_path.trainer.n_gpus_per_node=$GPU_num $model_0_config_path.trainer.nnodes=1 $model_0_config_path.actor_rollout_ref.rollout.tensor_model_parallel_size=$GPU_num"
@@ -28,6 +31,8 @@ model_0_resource="resource.n_gpus_per_node=$GPU_num  $model_0_config_path.traine
 
 python3 -m pettingllms.trainer.train --config-path ../config/code --config-name code_L0_single_agent \
     $model_0_resource \
+    $model_0_config_path.trainer.log_val_generations=10 \
+    $model_0_config_path.trainer.validation_data_dir=$val_generations_dir \
     project_name=marl-dev\
     training.project_name=marl-dev\
     models.model_0.path=Qwen/Qwen2.5-Coder-1.5B\
